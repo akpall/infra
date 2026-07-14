@@ -1,0 +1,10 @@
+#+begin_src dot :file test.png
+  strict digraph {
+  A [shape=box]
+  B [shape=box]
+  A -> B
+  }
+#+end_src
+
+#+RESULTS:
+[[file:test.png]]

@@ -1,4 +1,4 @@
-#+begin_src dot :file test.png
+#+begin_src dot :file test.png :exports results
   strict digraph {
   A [shape=box]
   B [shape=box]

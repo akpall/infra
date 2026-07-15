@@ -1,11 +1,17 @@
 * mikrotik
 
-#+begin_src dot :file test.png :exports results
-  strict digraph {
-  A [shape=box]
-  B [shape=box]
-  A -> B
-  }
+#+begin_src plantuml :file test.png :exports results
+  :start;
+
+  if (setup?) then (yes)
+  else (no)
+          while (dev certificates exist?) is (no)
+                  :create certificates;
+                  :add certificates;
+          endwhile (yes)
+  endif
+
+  :end;
 #+end_src
 
 #+RESULTS:

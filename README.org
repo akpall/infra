@@ -17,6 +17,7 @@
 [[file:test.png]]
 
 ** AI generated example setup
+#+begin_src
 infra/
 ├── .forgejo/
 │   └── workflows/
@@ -38,3 +39,4 @@ infra/
     │   └── leaf-etcd-apiserver/     # ⚙️ auto-apply
     ├── matchbox/                     # profiles/Ignition configs
     └── ca-crl/                       # revoked-serials list -> CRL, pushed to Mikrotik
+#+end_src

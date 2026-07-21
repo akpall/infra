@@ -23,9 +23,11 @@ infra/
     ├── matchbox/                     # profiles/Ignition configs
     └── ca-crl/                       # revoked-serials list -> CRL, pushed to Mikrotik
 #+end_example
+
 ** CA architecture
 #+begin_src plantuml :file ca.png :exports results
   @startmindmap
+  top to bottom direction
   ,* ROOT CA
   ,** INTERMEDIATE CA - SERVICES
   ,*** MIKROTIK ROUTER
@@ -37,3 +39,8 @@ infra/
 
 #+RESULTS:
 [[file:ca.png]]
+
+The *ROOT CA* will be generated and kept in terraform state only.
+
+Two Intermediate CAs will be generated, one for inner services and
+other for kubernetes use.

@@ -25,8 +25,14 @@ infra/
 #+end_example
 ** CA architecture
 #+begin_src plantuml :file ca.png :exports results
-  start
-  end
+  @startmindmap
+  ,* ROOT CA
+  ,** INTERMEDIATE CA - SERVICES
+  ,*** MIKROTIK ROUTER
+  ,*** MATCHBOX mTLS
+  ,*** OTHER SERVICES
+  ,** INTERMEDIATE CA - KUBERNETES
+  ,*** KUBERNETES CERTIFICATES
 #+end_src
 
 #+RESULTS:

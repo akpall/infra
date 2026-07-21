@@ -42,5 +42,5 @@ infra/
 
 The *ROOT CA* will be generated and kept in terraform state only.
 
-Two Intermediate CAs will be generated, one for inner services and
+Two *Intermediate CAs* will be generated, one for inner services and
 other for kubernetes use.

@@ -1,23 +1,6 @@
 * infra
-#+begin_src plantuml :file test.png :exports results
-  :start;
-
-  if (setup?) then (yes)
-  else (no)
-          while (dev certificates exist?) is (no)
-                  :create certificates;
-                  :add certificates;
-          endwhile (yes)
-  endif
-
-  :end;
-#+end_src
-
-#+RESULTS:
-[[file:test.png]]
-
 ** AI generated example setup
-#+begin_src
+#+begin_example
 infra/
 ├── .forgejo/
 │   └── workflows/
@@ -39,4 +22,12 @@ infra/
     │   └── leaf-etcd-apiserver/     # ⚙️ auto-apply
     ├── matchbox/                     # profiles/Ignition configs
     └── ca-crl/                       # revoked-serials list -> CRL, pushed to Mikrotik
+#+end_example
+** CA architecture
+#+begin_src plantuml :file ca.png :exports results
+  start
+  end
 #+end_src
+
+#+RESULTS:
+[[file:ca.png]]

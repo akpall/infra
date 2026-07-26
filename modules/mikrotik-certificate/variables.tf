@@ -1,32 +1,27 @@
 variable "algorithm" {
-  type    = string
   default = "RSA"
-}
-
-variable "rsa_bits" {
-  type    = number
-  default = 4096
-}
-
-variable "ecdsa_curve" {
   type    = string
-  default = "P384"
+}
+
+variable "cert_pem" {
+  type = string
 }
 
 variable "common_name" {
   type = string
 }
 
+variable "dns_names" {
+  type = list(string)
+}
+
 variable "early_renewal_hours" {
   type = number
 }
 
-variable "validity_period_hours" {
-  type = number
-}
-
-variable "dns_names" {
-  type = list(string)
+variable "ecdsa_curve" {
+  default = "P384"
+  type    = string
 }
 
 variable "organization" {
@@ -37,6 +32,11 @@ variable "private_key_pem" {
   type = string
 }
 
-variable "cert_pem" {
-  type = string
+variable "rsa_bits" {
+  default = 4096
+  type    = number
+}
+
+variable "validity_period_hours" {
+  type = number
 }

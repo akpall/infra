@@ -1,5 +1,5 @@
 resource "tls_cert_request" "mikrotik" {
-  dns_names = var.dns_names
+  dns_names       = var.dns_names
   private_key_pem = resource.tls_private_key.mikrotik.private_key_pem
   subject {
     common_name  = var.common_name
@@ -13,9 +13,9 @@ resource "tls_locally_signed_cert" "mikrotik" {
     "key_encipherment",
     "server_auth",
   ]
-  ca_cert_pem        = var.cert_pem
-  ca_private_key_pem = var.private_key_pem
-  cert_request_pem   = resource.tls_cert_request.mikrotik.cert_request_pem
+  ca_cert_pem           = var.cert_pem
+  ca_private_key_pem    = var.private_key_pem
+  cert_request_pem      = resource.tls_cert_request.mikrotik.cert_request_pem
   validity_period_hours = 12
 }
 

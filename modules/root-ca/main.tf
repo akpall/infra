@@ -11,9 +11,8 @@ resource "tls_self_signed_cert" "ca" {
   early_renewal_hours   = var.early_renewal_hours
 
   subject {
-    common_name         = var.common_name
-    organization        = var.organization
-    organizational_unit = var.organizational_unit
+    common_name  = var.common_name
+    organization = var.organization
   }
 
   allowed_uses = [

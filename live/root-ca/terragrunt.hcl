@@ -3,11 +3,11 @@ include "root" {
 }
 
 terraform {
-  source = "${get_repo_root()}/modules/ca-root"
+  source = "${get_repo_root()}/modules/root-ca"
 }
 
 inputs = {
-  common_name           = "akpall's Homelab Root CA"
+  common_name           = "homelab root CA"
   organization          = "akpall"
   validity_period_hours = 87600
 }

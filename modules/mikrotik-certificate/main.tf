@@ -13,10 +13,11 @@ resource "tls_locally_signed_cert" "mikrotik" {
     "key_encipherment",
     "server_auth",
   ]
-  ca_cert_pem           = var.cert_pem
   ca_private_key_pem    = var.private_key_pem
   cert_request_pem      = resource.tls_cert_request.mikrotik.cert_request_pem
-  validity_period_hours = 12
+  early_renewal_hours   = var.early_renewal_hours
+  validity_period_hours = var.validity_period_hours
+  ca_cert_pem           = var.cert_pem
 }
 
 resource "tls_private_key" "mikrotik" {

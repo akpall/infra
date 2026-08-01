@@ -6,6 +6,7 @@ inputs = {
   common_name           = "homelab root CA"
   organization          = "akpall"
   validity_period_hours = 87600
+  files_dir = "${get_repo_root()}/files/"
 }
 
 terraform {

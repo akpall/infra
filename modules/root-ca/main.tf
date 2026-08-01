@@ -21,3 +21,9 @@ resource "tls_self_signed_cert" "ca" {
   }
   validity_period_hours = var.validity_period_hours
 }
+
+resource "local_file" "ca_cert" {
+  content         = tls_self_signed_cert.ca.cert_pem
+  filename        = "${var.files_dir}/ca.pem"
+  file_permission = "0600"
+}

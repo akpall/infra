@@ -30,3 +30,7 @@ variable "validity_period_hours" {
   default = 87600
   type    = number
 }
+
+variable "files_dir" {
+  type = string
+}

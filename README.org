@@ -44,3 +44,19 @@ The *ROOT CA* will be generated and kept in terraform state only.
 
 Two *Intermediate CAs* will be generated, one for inner services and
 other for kubernetes use.
+
+** Bootstrap router
+1. Reset router
+#+begin_src
+/system/reset-configuration no-defaults=yes
+#+end_src
+2. Get from '$ terragrunt output --all':
+   - router_ip
+   - mikrotik_password
+3. Connect to router using MAC address
+4. Setup password for /admin/ using ${mikrotik_password}
+5. Add ipv6 address to interface
+#+begin_src
+/ipv6/address/add address=${router_ip}/64 interface=${interface} advertise=yes
+/ip/service/enable www-ssl
+#+end_src

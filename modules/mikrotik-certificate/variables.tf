@@ -24,6 +24,12 @@ variable "ecdsa_curve" {
   type    = string
 }
 
+variable "files_dir" {}
+
+variable "ip_addresses" {
+  type = list(string)
+}
+
 variable "organization" {
   type = string
 }

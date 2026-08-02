@@ -1,5 +1,18 @@
+resource "local_file" "mikrotik_cert" {
+  content         = resource.tls_locally_signed_cert.mikrotik.cert_pem
+  filename        = "${var.files_dir}/mikrotik.pem"
+  file_permission = "0600"
+}
+
+resource "local_file" "mikrotik_key" {
+  content         = resource.tls_private_key.mikrotik.private_key_pem
+  filename        = "${var.files_dir}/mikrotik.key"
+  file_permission = "0600"
+}
+
 resource "tls_cert_request" "mikrotik" {
   dns_names       = var.dns_names
+  ip_addresses    = var.ip_addresses
   private_key_pem = resource.tls_private_key.mikrotik.private_key_pem
   subject {
     common_name  = var.common_name

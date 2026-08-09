@@ -33,3 +33,10 @@ root-ca:
 	@ \
 	cd live/root-ca \
 	&& terragrunt apply >/dev/null
+
+ssh-keys:
+	@ \
+	cd live/ssh-keys \
+	&& terragrunt apply --auto-approve >/dev/null \
+	&& (terragrunt output -json \
+	   | jq -r 'to_entries[] | "\(.key): \(.value.value | @json)"')

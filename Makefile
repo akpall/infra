@@ -8,24 +8,24 @@ format:
 mikrotik-certificate:
 	@ \
 	cd live/mikrotik-certificate \
-	&& terragrunt apply >/dev/null
+	&& terragrunt apply --auto-approve >/dev/null
 
 mikrotik-config:
 	@ \
 	cd live/mikrotik-config \
-	&& terragrunt apply >/dev/null
+	&& terragrunt apply --auto-approve >/dev/null
 
 network:
 	@ \
 	cd live/network \
-	&& terragrunt apply >/dev/null \
+	&& terragrunt apply --auto-approve  >/dev/null \
 	&& (terragrunt output -json \
 	   | jq -r 'to_entries[] | "\(.key): \(.value.value | @json)"')
 
 passwords:
 	@ \
 	cd live/passwords \
-	&& terragrunt apply >/dev/null \
+	&& terragrunt apply --auto-approve >/dev/null \
 	&& (terragrunt output -json \
 	   | jq -r 'to_entries[] | "\(.key): \(.value.value | @json)"')
 

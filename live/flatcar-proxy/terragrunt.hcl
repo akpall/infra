@@ -4,7 +4,7 @@ dependency "ssh-keys" {
 
 include "root" {
   expose = true
-  path = find_in_parent_folders("root.hcl")
+  path   = find_in_parent_folders("root.hcl")
 }
 
 inputs = {

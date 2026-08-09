@@ -40,3 +40,10 @@ ssh-keys:
 	&& terragrunt apply --auto-approve >/dev/null \
 	&& (terragrunt output -json \
 	   | jq -r 'to_entries[] | "\(.key): \(.value.value | @json)"')
+
+flatcar-proxy:
+	@ \
+	cd live/flatcar-proxy \
+	&& terragrunt apply --auto-approve >/dev/null \
+	&& (terragrunt output -json \
+	   | jq -r 'to_entries[] | "\(.key): \(.value.value | @json)"')

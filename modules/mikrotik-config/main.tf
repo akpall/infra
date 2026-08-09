@@ -22,6 +22,7 @@ resource "routeros_interface_bridge_port" "ether" {
 
 resource "routeros_ipv6_address" "lan_ipv6_address" {
   address   = var.router_ip
+  advertise = true
   interface = "lan"
 }
 

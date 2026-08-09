@@ -22,7 +22,8 @@ resource "local_file" "flatcar-proxy" {
 terraform {
   required_providers {
     ignition = {
-      source = "community-terraform-providers/ignition"
+      source  = "community-terraform-providers/ignition"
+      version = ">=2.6.0, <2.7.0"
     }
   }
 }

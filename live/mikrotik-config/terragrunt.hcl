@@ -22,7 +22,7 @@ inputs = {
   ca_certificate  = "${get_repo_root()}/files/ca.pem"
   hosturl         = "https://[${dependency.network.outputs.router_ip}]:443"
   password        = dependency.passwords.outputs.mikrotik_password
-  router_ip       = dependency.network.outputs.router_ip
+  router_ip       = "${dependency.network.outputs.router_ip}/64"
   username        = "admin"
   password_length = 20
 }

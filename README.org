@@ -26,15 +26,15 @@ infra/
 
 ** CA architecture
 #+begin_src plantuml :file ca.png :exports results
-  @startmindmap
-  top to bottom direction
-  ,* ROOT CA
-  ,** INTERMEDIATE CA - SERVICES
-  ,*** MIKROTIK ROUTER
-  ,*** MATCHBOX mTLS
-  ,*** OTHER SERVICES
-  ,** INTERMEDIATE CA - KUBERNETES
-  ,*** KUBERNETES CERTIFICATES
+@startmindmap
+top to bottom direction
+,* ROOT CA
+,** INTERMEDIATE CA - SERVICES
+,*** MIKROTIK ROUTER
+,*** MATCHBOX mTLS
+,*** OTHER SERVICES
+,** INTERMEDIATE CA - KUBERNETES
+,*** KUBERNETES CERTIFICATES
 #+end_src
 
 #+RESULTS:
@@ -47,9 +47,9 @@ other for kubernetes use.
 
 ** Bootstrap router
 1. Reset router
-#+begin_src
+   #+begin_src
 /system/reset-configuration no-defaults=yes
-#+end_src
+   #+end_src
 2. Forget terragrunt state or rm .terragrunt-cache
    #+begin_src
 $ cd live/mikrotik-config

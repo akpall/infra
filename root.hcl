@@ -1,5 +1,6 @@
 inputs = {
-  files_dir = "${get_repo_root()}/files/"
+  ignition_dir = "${get_repo_root()}/ignition/"
+  files_dir    = "${get_repo_root()}/files/"
 }
 
 locals {

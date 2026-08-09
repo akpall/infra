@@ -100,3 +100,11 @@ $ terragrunt import routeros_ipv6_address.lan_ipv6_address "address=${router_ip}
 ** Bootstrap virtual machine for proxy
 *** Download /flatcar_production_iso_image.iso/ from [[https://www.flatcar.org/releases/][flatcar.org]]
 *** Boot into /flatcar_production_iso_image.iso/
+*** Download /flatcar-proxy.json/ ignition config
+#+begin_src
+$ curl https://raw.githubusercontent.com/akpall/infra/refs/heads/master/ignition/flatcar-proxy.json -O
+#+end_src
+*** Install on disk
+#+begin_src
+# flatcar-install -d ${DEVICE} -i flatcar-proxy.json
+#+end_src

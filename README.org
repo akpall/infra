@@ -96,3 +96,7 @@ $ terragrunt import routeros_interface_bridge.lan "name=lan"
 $ terragrunt import 'routeros_interface_bridge_port.ether["${ether}"]' "interface=${ether}"
 $ terragrunt import routeros_ipv6_address.lan_ipv6_address "address=${router_ip}/64"
 #+end_src
+
+** Bootstrap virtual machine for proxy
+*** Download /flatcar_production_iso_image.iso/ from [[https://www.flatcar.org/releases/][flatcar.org]]
+*** Boot into /flatcar_production_iso_image.iso/

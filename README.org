@@ -46,52 +46,53 @@ Two *Intermediate CAs* will be generated, one for inner services and
 other for kubernetes use.
 
 ** Bootstrap router
-1. Reset router
-   #+begin_src
+*** 1. Reset router
+#+begin_src
 /system/reset-configuration no-defaults=yes
-   #+end_src
-2. Forget terragrunt state or rm .terragrunt-cache
-   #+begin_src
+#+end_src
+*** 2. Forget terragrunt state
+#+begin_src
 $ cd live/mikrotik-config
-# if remote S3
+#+end_src
+if remote S3:
+#+begin_src
 $ terragrunt backend delete
-# if local
+#+end_src
+if local:
+#+begin_src
 $ rm -r .terragrunt-cache
-   #+end_src
-3. Connect to router using MAC address. Password is empty
-4. Get *mikrotik_password* from *$ make passwords*
-5. Setup password for /admin/ using *mikrotik_password*
-6. Setup bridge named *lan* and add connected interface to it
-   #+begin_src
+#+end_src
+*** 3. Connect to router using MAC address, password is empty
+*** 4. Get /mikrotik_password/ from /$ make passwords/
+*** 5. Setup /admin/ using /mikrotik_password/
+*** 6. Setup /lan/ bridge and add connected interface to it
+#+begin_src
 /interface/bridge/add auto-mac=yes name=lan
 /interface/bridge/port/add bridge=lan interface=${ether}
-   #+end_src
-7. Get *router_ip* from *$ make network*
-8. Add ipv6 address to *lan*
-   #+begin_src
+#+end_src
+*** 7. Get /router_ip/ from /$ make network/
+*** 8. Add /router_ip/ to /lan/
+#+begin_src
 /ipv6/address/add address=${router_ip}/64 interface=lan advertise=yes
-   #+end_src
-9. Upload mikrotik.{pem,key} from files
-   #+begin_src
+#+end_src
+*** 9. Upload /mikrotik.{pem,key}/ from files
+#+begin_src
 $ scp files/mikrotik.{key,pem} admin@[${router_ip}]:/
-   #+end_src
-10. Import mikrotik.{crt,key}
-    #+begin_src
+#+end_src
+*** 10. Import /mikrotik.{crt,key}/
+#+begin_src
 /certificate/import file-name=mikrotik.pem trusted=yes
 /certificate/import file-name=mikrotik.key trusted=yes
-    #+end_src
-11. Enable www-ssl for https api and select mikrotik.pem
-    #+begin_src
+#+end_src
+*** 11. Set /mikrotik.pem_0/ as certificate for /www-ssl/ and enable it
+#+begin_src
 /ip/service/set www-ssl certificate=mikrotik.pem_0
 /ip/service/enable www-ssl
-    #+end_src
-12. Import entries:
-    1. routeros_interface_bridge.lan
-    2. routeros_interface_bridge_port.ether[${ether}]
-    3. routeros_ipv6_address.lan_ipv6_address
-       #+begin_src
+#+end_src
+*** 12. Import manually created entries
+#+begin_src
 $ cd live/mikrotik-config
 $ terragrunt import routeros_interface_bridge.lan "name=lan"
 $ terragrunt import 'routeros_interface_bridge_port.ether["${ether}"]' "interface=${ether}"
 $ terragrunt import routeros_ipv6_address.lan_ipv6_address "address=${router_ip}/64"
-       #+end_src
+#+end_src

@@ -48,6 +48,7 @@ data "ignition_file" "static-network" {
       Address=193.40.103.107/24
       Gateway=193.40.103.1
       DHCP=ipv6
+      DHCPPrefixDelegation=yes
       IPv6AcceptRA=yes
 
       [DHCPv6]
